@@ -21,7 +21,7 @@ PAL 2
 NAME underground
 0,0,0
 124,88,62
-255,255,255
+119,113,95
 255,0,0
 
 ROOM 0
@@ -146,7 +146,7 @@ ROOM 5
 0,0,0,b,0,b,0,0,0,0,0,0,0,0,0,0
 0,0,0,b,0,b,b,b,b,0,0,0,0,0,0,0
 0,0,0,b,0,0,0,0,b,0,0,0,0,0,0,0
-0,0,b,b,b,b,0,0,b,b,b,b,b,b,0,0
+0,0,b,b,b,b,0,0,0,b,b,b,b,b,0,0
 0,0,b,0,0,0,0,0,0,0,0,0,0,b,0,0
 0,0,b,0,0,0,0,0,0,0,0,0,0,b,0,0
 0,0,b,0,0,0,0,0,0,0,0,0,0,b,0,0
@@ -160,6 +160,8 @@ b,b,b,0,0,0,0,0,0,0,0,0,e,0,b,b
 0,0,0,0,0,0,0,b,0,b,0,0,0,0,0,0
 0,0,0,0,0,0,0,b,0,b,0,0,0,0,0,0
 NAME hub_01
+ITM 7 7,5
+ITM 6 5,2
 EXT 0,8 4 15,7
 PAL 2
 
@@ -234,7 +236,7 @@ NAME steps_ul
 SPR A
 00011000
 00011000
-00011000
+00000000
 00111100
 01111110
 10111101
@@ -287,7 +289,7 @@ ITM 2
 01111110
 11111111
 11111111
-NAME toe_rock_01_PERMANENT
+NAME toe_rock_01_PERM
 DLG ITM_2
 COL 3
 
@@ -325,9 +327,33 @@ ITM 5
 00000000
 11111111
 00000000
-NAME toe_tile_PERMANENT
+NAME toe_tile_PERM
 DLG ITM_5
 COL 3
+
+ITM 6
+00011000
+00111100
+01111110
+01100110
+11000011
+11000011
+11100111
+11111111
+NAME keyDoor_sphere_PERM_SOLID
+DLG ITM_7
+
+ITM 7
+00000000
+00000000
+00011000
+00111100
+00111100
+00011000
+00000000
+00000000
+NAME temp_spherekey
+DLG ITM_6
 
 DLG SPR_0
 I'm a cat
@@ -384,6 +410,26 @@ DLG ITM_5
 }
 """
 
+DLG ITM_6
+"""
+You picked up the sphere key!
+{hasSphereKey = 1}
+"""
+
+DLG ITM_7
+"""
+{
+  - hasSphereKey < 1 ?
+    The door is locked with a spherical keyhole
+  - hasSphereKey >= 1 ?
+    Door unlocked
+    (js "removeItem('keyDoor_sphere_PERM_SOLID', item)")
+}
+"""
+
 VAR toe_tile
+0
+
+VAR hasSphereKey
 0
 
