@@ -161,6 +161,7 @@ b,b,b,0,0,0,0,0,0,0,0,0,e,0,b,b
 0,0,0,0,0,0,0,b,0,b,0,0,0,0,0,0
 NAME hub_01
 ITM 6 5,2
+ITM 9 9,4
 EXT 0,8 4 15,7
 EXT 8,15 6 8,4
 PAL 2
@@ -183,6 +184,7 @@ ROOM 6
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NAME first_creature
+ITM 8 7,11
 EXT 8,4 5 8,15
 EXT 7,12 7 7,5
 PAL 2
@@ -402,6 +404,51 @@ NAME trg_ent_oldManRoom
 DLG ITM_6
 COL 3
 
+ITM 8
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME trg_firstCreature_PERM
+DLG ITM_8
+COL 3
+
+ITM 9
+00000000
+00000000
+00011000
+00111100
+00111100
+00011000
+00000000
+00000000
+NAME tmpKey
+DLG ITM_9
+
+ITM a
+00000000
+00000000
+00000000
+00000000
+00000000
+00110000
+01111100
+11111111
+>
+00000000
+00000000
+00000000
+00000000
+00000000
+00001100
+00111110
+11111111
+NAME firstCreature_PERM_SOLID
+
 DLG ITM_0
 """
 Light trickles in through cracks in the walls. You can see a little better now.
@@ -486,6 +533,21 @@ DLG SPR_0
     "Do not linger here long. The shadows will swallow you whole."
 }
 """
+
+DLG ITM_8
+"""
+{
+  - hasSphereKey >= 1 ?
+    You hear something skitter across the floor as you step into the room. You can't see it anymore, but you can feel it in the shadows.
+    (js "spawnItem(getItemId('firstCreature_PERM_SOLID', item), 7, 8)")
+    (js "removeItem('trg_firstCreature_PERM', item);")
+  - else ?
+
+}
+"""
+
+DLG ITM_9
+{hasSphereKey = 1}
 
 VAR toe_tile
 0

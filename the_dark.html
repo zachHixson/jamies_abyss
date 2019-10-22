@@ -10254,14 +10254,40 @@ function dos2unix(text) {
 </script>
 
 <script id = "myFunc">
-	function removeItem(itemName, itemIn){
-		let found;
-
-		for (idx in itemIn){
-			if (itemIn[idx].name == itemName){
-				found = itemIn[idx];
+	function getItemId(itemName, itemList){
+		for (idx in itemList){
+			if (itemList[idx].name == itemName){
+				return itemList[idx].id;
 			}
 		}
+	}
+
+	function getItemFromList(itemId, itemList){
+		for (idx in itemList){
+			if (itemList[idx].id == itemId){
+				return itemList[idx];
+			}
+		}
+	}
+
+	function getItemInRoom(itemId){
+		for (let i = 0; i < getRoom().items.length; i++){
+			if (item[i].id == itemid){
+				return item[i];
+			}
+		}
+	}
+
+	function spawnItem(itemId, xIn, yIn){
+		getRoom().items.push({
+			id:itemId,
+			x: xIn,
+			y: yIn
+		});
+	}
+
+	function removeItem(itemName, itemList){
+		let found = itemList[getItemId(itemName, itemList)];
 
 		for (let i = 0; i < getRoom().items.length; i++){
 			if (getRoom().items[i].id == found.id){
@@ -10269,6 +10295,13 @@ function dos2unix(text) {
 			}
 		}
 	}
+
+/*
+(js "
+getRoom().items.push({id:'2', x:5, y:5})
+");
+
+*/
 </script>
 
 </head>
