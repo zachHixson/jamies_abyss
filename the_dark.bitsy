@@ -205,6 +205,7 @@ ROOM 7
 0,0,b,b,b,b,b,b,b,b,b,b,b,b,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NAME old_man_room
+ITM 7 7,7
 EXT 7,5 6 7,12
 PAL 2
 
@@ -285,7 +286,7 @@ SPR A
 10111101
 00100100
 00100100
-POS 0 5,7
+POS 5 6,5
 
 SPR a
 00000000
@@ -388,8 +389,18 @@ ITM 6
 NAME keyDoor_sphere_PERM_SOLID
 DLG ITM_7
 
-DLG SPR_0
-I'm a cat
+ITM 7
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME trg_ent_oldManRoom
+DLG ITM_6
+COL 3
 
 DLG ITM_0
 """
@@ -447,10 +458,32 @@ DLG ITM_7
 """
 {
   - hasSphereKey < 1 ?
-    The door is locked with a spherical keyhole
+    You reach out with your hands and feel a smooth surface with a round hole in the middle. What could this be?
   - hasSphereKey >= 1 ?
-    Door unlocked
+    You Place the sphere gifted to you by the old man into the slot.
+    (p)The door opens.
     (js "removeItem('keyDoor_sphere_PERM_SOLID', item)")
+}
+"""
+
+DLG ITM_6
+As You enter the room, you can hear raspy breathing coming from within.
+
+DLG SPR_0
+"""
+{
+  - hasSphereKey < 1 ?
+    You see an old man slouched against the wall. As he speaks he struggles for air.
+    (p)...
+    (p)"Why have you come here?"
+    (p)"This is a horrible place."
+    (p)"These forlorn ruins are only meant to be traversed by the horrid and the foul."
+    (p)...
+    (p)"All is not lost though. Even fools such as yourself are not trapped completely."
+    (p)"This is the only thing I can give you to help you along your way."
+    (p)He proceeds to hand you what feels like a small ball. {hasSphereKey = 1}
+  - hasSphereKey >= 1 ?
+    "Do not linger here long. The shadows will swallow you whole."
 }
 """
 
