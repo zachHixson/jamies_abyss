@@ -448,6 +448,7 @@ ITM a
 00111110
 11111111
 NAME firstCreature_PERM_SOLID
+DLG ITM_a
 
 DLG ITM_0
 """
@@ -549,9 +550,23 @@ DLG ITM_8
 DLG ITM_9
 {hasSphereKey = 1}
 
+DLG ITM_a
+"""
+{
+  - touchedCreature < 0 ?
+    You can feel something in front of you. You can't see anything, but you know something is there.{touchedCreature = 0}(rTag "firstCreatureChoice")
+}{
+  - touchedCreature == 2 ?
+    You decided this thing was better left alone.
+}
+"""
+
 VAR toe_tile
 0
 
 VAR hasSphereKey
 0
+
+VAR touchedCreature
+-1
 
