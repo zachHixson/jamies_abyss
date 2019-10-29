@@ -164,6 +164,7 @@ b,b,b,0,0,0,0,0,0,0,0,0,e,0,b,b
 NAME hub_01
 ITM 6 5,2
 ITM 9 9,4
+ITM h 10,4
 EXT 0,8 4 15,7
 EXT 8,15 6 8,4
 EXT 4,0 8 4,12
@@ -435,7 +436,7 @@ SPR A
 10111101
 00100100
 00100100
-POS 5 6,5
+POS 5 7,4
 
 SPR a
 00000000
@@ -716,6 +717,18 @@ NAME key_creature_dead_PERM_SOLID
 DLG ITM_g
 COL 5
 
+ITM h
+00000000
+00000000
+00000000
+00011000
+00011000
+00000000
+00000000
+00000000
+NAME tempCubeKey
+DLG ITM_h
+
 DLG ITM_0
 """
 Light trickles in through cracks in the walls. You can see a little better now.
@@ -776,7 +789,7 @@ DLG ITM_7
   - hasSphereKey >= 1 ?
     You Place the sphere gifted to you by the old man into the slot.
     (p)The door opens.
-    (js "removeItem('keyDoor_sphere_PERM_SOLID', item)")
+    (js "removeItem('keyDoor_sphere_PERM_SOLID')")
 }
 """
 
@@ -807,7 +820,7 @@ DLG ITM_8
   - hasSphereKey >= 1 ?
     You hear something skitter across the floor as you step into the room. You can't see it anymore, but you can feel it in the shadows.
     (js "spawnItem(getItemId('firstCreature_PERM_SOLID', item), 7, 8)")
-    (js "removeItem('trg_firstCreature_PERM', item);")
+    (js "removeItem('trg_firstCreature_PERM');")
   - else ?
 
 }
@@ -854,12 +867,15 @@ DLG ITM_f
   - keyCreatureState == 2 ?
     The mass writhes and shrieks in pain as you plunge your hand through it's flesh and a horrible smell fills the room. Your fingers tips start to feel something.(rTag "keyCreatureChoice_dig")
   - keyCreatureState == 3 ?
-    The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object from the now motionless pile of flesh.{hasCubeKey = 1}(js "removeItem('key_creature_PERM_SOLID', 'key_creature_dead_PERM_SOLID', item)")
+    The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object from the now motionless pile of flesh.{hasCubeKey = 1}(js "swapItem('key_creature_PERM_SOLID', 'key_creature_dead_PERM_SOLID')")
 }
 """
 
 DLG ITM_g
 The ripped apart corpse of the creature still hangs on the wall.
+
+DLG ITM_h
+{hasCubeKey = 1}
 
 VAR toe_tile
 0
@@ -874,5 +890,5 @@ VAR hasCubeKey
 0
 
 VAR keyCreatureState
-3
+0
 

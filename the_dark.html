@@ -11409,26 +11409,26 @@ function dos2unix(text) {
 </script>
 
 <script id = "myFunc">
-	function getItemId(itemName, itemList){
-		for (idx in itemList){
-			if (itemList[idx].name == itemName){
-				return itemList[idx].id;
+	function getItemId(itemName){
+		for (let idx in item){
+			if (item[idx].name == itemName){
+				return item[idx].id;
 			}
 		}
 	}
 
-	function getItemFromList(itemId, itemList){
-		for (idx in itemList){
-			if (itemList[idx].id == itemId){
-				return itemList[idx];
+	function getItemFromList(itemId){
+		for (idx in item){
+			if (item[idx].id == itemId){
+				return item[idx];
 			}
 		}
 	}
 
 	function getItemInRoom(itemId){
 		for (let i = 0; i < getRoom().items.length; i++){
-			if (item[i].id == itemid){
-				return item[i];
+			if (getRoom().items[i].id == itemId){
+				return getRoom().items[i];
 			}
 		}
 	}
@@ -11441,8 +11441,8 @@ function dos2unix(text) {
 		});
 	}
 
-	function removeItem(itemName, itemList){
-		let found = itemList[getItemId(itemName, itemList)];
+	function removeItem(itemName){
+		let found = item[getItemId(itemName)];
 
 		for (let i = 0; i < getRoom().items.length; i++){
 			if (getRoom().items[i].id == found.id){
@@ -11451,10 +11451,11 @@ function dos2unix(text) {
 		}
 	}
 
-	function swapItem(oldItemName, newItemName, itemList){
-		let oldItem = getItemFromRoom(getItemId(oldItemName));
-		removeItem(oldItemName, itemList);
-		spawnItem(newItemName, oldItem.x, oldItem.y);
+	function swapItem(oldItemName, newItemName){
+		let oldItem = getItemInRoom(getItemId(oldItemName));
+		console.log(oldItem);
+		removeItem(oldItemName);
+		spawnItem(getItemId(newItemName), oldItem.x, oldItem.y);
 	}
 
 	let dialogChoices = {
