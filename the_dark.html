@@ -11451,6 +11451,12 @@ function dos2unix(text) {
 		}
 	}
 
+	function swapItem(oldItemName, newItemName, itemList){
+		let oldItem = getItemFromRoom(getItemId(oldItemName));
+		removeItem(oldItemName, itemList);
+		spawnItem(newItemName, oldItem.x, oldItem.y);
+	}
+
 	let dialogChoices = {
 		"firstCreatureChoice" :
 `{choice
@@ -11472,6 +11478,13 @@ function dos2unix(text) {
 	  This thing makes your skin crawl, so you walk away for now.
 	- Attempt to retrieve
 	  ...{keyCreatureState = 2}(js "startItemDialog(getItemId('key_creature_PERM_SOLID', item))")
+}`,
+		"keyCreatureChoice_dig" :
+`{choice
+	- Give up
+	  Seeing this creature in pain is just too much.(p)You decide to give up for now.
+	- Keep Digging
+	  ...{keyCreatureState = 3}(js "startItemDialog(getItemId('key_creature_PERM_SOLID', item))")
 }`
 	}
 

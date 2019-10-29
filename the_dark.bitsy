@@ -703,6 +703,19 @@ NAME key_creature_PERM_SOLID
 DLG ITM_f
 COL 5
 
+ITM g
+00111100
+01010110
+11010011
+00001000
+00000000
+00000000
+00000000
+00000000
+NAME key_creature_dead_PERM_SOLID
+DLG ITM_g
+COL 5
+
 DLG ITM_0
 """
 Light trickles in through cracks in the walls. You can see a little better now.
@@ -835,15 +848,18 @@ DLG ITM_f
 """
 {
   - keyCreatureState == 0 ?
-    You reach out and touch something on the wall. It squishes and emits a sound which is something between a squeal and a purr.(rTag "keyCreatureChoice_investigate")
+    You reach out and touch something growing on the wall. It squishes and emits a sound which is something between a squeal and a purr.(rTag "keyCreatureChoice_investigate")
   - keyCreatureState == 1 ?
     You feel a solid lump inside a fleshy section of the mass. It doesn't seem organic. You might be able to retrieve it.(rTag "keyCreatureChoice_retrieve")
   - keyCreatureState == 2 ?
-    The mass writhes and shrieks in pain as you plunge your hand through it's flesh and a horrible smell fills the room. Your fingers tips start to feel something.
+    The mass writhes and shrieks in pain as you plunge your hand through it's flesh and a horrible smell fills the room. Your fingers tips start to feel something.(rTag "keyCreatureChoice_dig")
   - keyCreatureState == 3 ?
-    The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object.{hasCubeKey = 1}
+    The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object from the now motionless pile of flesh.{hasCubeKey = 1}(js "removeItem('key_creature_PERM_SOLID', 'key_creature_dead_PERM_SOLID', item)")
 }
 """
+
+DLG ITM_g
+The ripped apart corpse of the creature still hangs on the wall.
 
 VAR toe_tile
 0
@@ -858,5 +874,5 @@ VAR hasCubeKey
 0
 
 VAR keyCreatureState
-0
+3
 
