@@ -165,6 +165,7 @@ NAME hub_01
 ITM 6 5,2
 ITM 9 9,4
 ITM h 10,4
+ITM i 14,8
 EXT 0,8 4 15,7
 EXT 6,15 6 6,4
 EXT 4,0 8 4,12
@@ -233,8 +234,6 @@ ROOM 8
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NAME squishy_room_01
-ITM b 5,8
-ITM c 8,9
 ITM c 12,6
 ITM b 12,9
 ITM d 3,6
@@ -246,6 +245,8 @@ ITM e 3,9
 ITM e 7,6
 ITM c 4,10
 ITM e 12,4
+ITM b 8,9
+ITM d 5,8
 EXT 4,12 5 4,0
 EXT 8,3 9 9,13
 PAL 2
@@ -545,6 +546,17 @@ TIL u
 NAME undg_03
 WAL true
 
+TIL v
+11111111
+10000001
+10100101
+10111101
+10111101
+10100101
+10000001
+11111111
+NAME undg_04
+
 SPR A
 00011000
 00011000
@@ -554,7 +566,7 @@ SPR A
 10111101
 00100100
 00100100
-POS 0 5,7
+POS 5 5,8
 
 SPR a
 00000000
@@ -847,6 +859,18 @@ ITM h
 NAME tempCubeKey
 DLG ITM_h
 
+ITM i
+10111011
+10011001
+11111111
+11100111
+11100111
+11111111
+10011001
+11011101
+NAME keyDoor_cube_PERM_SOLID
+DLG ITM_i
+
 DLG ITM_0
 """
 Light trickles in through cracks in the walls. You can see a little better now.
@@ -935,7 +959,7 @@ DLG ITM_8
 """
 {
   - hasSphereKey >= 1 ?
-    You hear something skitter across the floor as you step into the room. You can't see it anymore, but you can feel it in the shadows.
+    You hear something skitter across the floor as you step into the room. You can still feel it in the shadows.
     (js "spawnItem(getItemId('firstCreature_PERM_SOLID', item), 7, 8)")
     (js "removeItem('trg_firstCreature_PERM');")
   - else ?
@@ -950,7 +974,7 @@ DLG ITM_a
 """
 {
   - touchedCreature < 0 ?
-    You can feel something in front of you. You can't see anything, but you know something is there.{touchedCreature = 0}(rTag "firstCreatureChoice")
+    You can sense something in front of you. You can't see anything, but you know it's there.{touchedCreature = 0}(rTag "firstCreatureChoice")
 }{
   - touchedCreature == 2 ?
     You decided this thing was better left alone.
@@ -993,6 +1017,16 @@ The ripped apart corpse of the creature still hangs on the wall.
 
 DLG ITM_h
 {hasCubeKey = 1}
+
+DLG ITM_i
+"""
+{
+  - hasCubeKey <= 0 ?
+    Your fingers run across the surface of the wall and you feel a small recess in the stone. It's geometric, like a square. 
+  - hasCubeKey >= 1 ?
+    You take the small cube that you pulled from the creature and place it in the slot. It fits perfectly.(p){shk}RUMBLE{shk}(p)The wall slides down into the floor and reveals a passageway.(js "removeItem('keyDoor_cube_PERM_SOLID')")
+}
+"""
 
 VAR toe_tile
 0
