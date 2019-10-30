@@ -566,7 +566,7 @@ SPR A
 10111101
 00100100
 00100100
-POS 5 5,8
+POS 0 5,7
 
 SPR a
 00000000
@@ -903,9 +903,9 @@ You stepped in a puddle. Your sock is now soaked.
 
 DLG ITM_4
 """
-{shk}You feel the ground shaking beneath you. Suddenly the entire room feels like it's falling{shk}
+{shk}You feel the ground shaking beneath you. Suddenly the entire room feels like it's falling
 (p)...
-(p)CRAAASH!!!!
+(p)CRAAASH!!!!{shk}
 (exitNow "elevator_bottom")
 """
 
