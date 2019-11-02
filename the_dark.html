@@ -8285,12 +8285,31 @@ CHAR 255
 <script src="hacks\perm_items.js"></script>
 <script src="hacks\external_game_data.js"></script>
 <script src="hacks\helper_functions.js"></script>
+<script src="hacks\pixel_shader.js"></script>
+<script>
+function injectShader(){
+	drawRoom = (function(){
+		let old_func = drawRoom;
 
+		return function(){
+			let result;
+
+			result = old_func.apply(this, [room[curRoom]]);
+
+			if (pixelShaderOn){
+				callPixelShader(canvas);
+			}
+
+			return result;
+		}
+	}());
+}
+</script>
 </head>
 
 
 <!-- DOCUMENT BODY -->
-<body onload='startExportedGame()'>
+<body onload='startExportedGame(); injectShader()'>
 	<!-- GAME CANVAS -->
 	<canvas id='game'></canvas>
 </body>

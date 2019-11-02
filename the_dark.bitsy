@@ -13,15 +13,15 @@ NAME pchBlk
 PAL 1
 NAME dark
 0,0,0
+42,42,42
 92,92,92
-255,255,255
 255,0,0
 
 PAL 2
 NAME underground
 0,0,0
-124,88,62
-119,113,95
+42,30,21
+76,72,60
 255,0,0
 71,0,68
 138,0,50
@@ -903,9 +903,11 @@ You stepped in a puddle. Your sock is now soaked.
 
 DLG ITM_4
 """
+(jsNow "activateShader(shakeShader)")
 {shk}You feel the ground shaking beneath you. Suddenly the entire room feels like it's falling
 (p)...
 (p)CRAAASH!!!!{shk}
+(jsNow "activateShader(spotlightShader);shaderParams.opacity = 40")
 (exitNow "elevator_bottom")
 """
 
@@ -960,7 +962,7 @@ DLG ITM_8
 {
   - hasSphereKey >= 1 ?
     You hear something skitter across the floor as you step into the room. You can still feel it in the shadows.
-    (js "spawnItem(getItemId('firstCreature_PERM_SOLID', item), 7, 8)")
+    (jsNow "spawnItem(getItemId('firstCreature_PERM_SOLID', item), 7, 8)")
     (js "removeItem('trg_firstCreature_PERM');")
   - else ?
 
