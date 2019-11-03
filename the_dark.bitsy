@@ -1,4 +1,4 @@
-The Dark
+the_dark
 
 # BITSY VERSION 6.4
 
@@ -33,6 +33,24 @@ NAME secret_room
 132,90,60
 137,137,137
 255,242,0
+
+PAL 4
+NAME ending_01
+0,0,0
+70,97,104
+79,79,79
+
+PAL 5
+NAME ending_02
+0,0,0
+130,163,169
+153,153,153
+
+PAL 6
+NAME ending_03
+0,0,0
+188,253,250
+197,197,197
 
 ROOM 0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -317,7 +335,6 @@ u,u,w,x,10,10,z,y,y,10,10,w,x,z,u,u
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NAME squishy_room_02
-ITM p 2,8
 ITM q 4,5
 ITM q 14,11
 ITM q 9,11
@@ -334,26 +351,23 @@ EXT 11,0 b 7,15
 PAL 2
 
 ROOM b
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,0,a,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,0,a,0,0,0,0,0,0
 0,0,0,u,t,t,t,0,0,t,t,t,u,0,0,0
-0,0,0,u,0,0,d,0,0,h,0,0,u,0,0,0
-0,0,0,s,0,0,e,c,c,g,0,w,u,0,0,0
-0,0,0,s,z,10,11,0,0,11,x,y,u,0,0,0
+0,0,0,u,z,10,d,0,0,h,w,x,u,0,0,0
+0,0,0,s,w,x,e,c,c,g,y,w,u,0,0,0
+0,0,0,s,z,10,0,0,0,0,x,y,u,0,0,0
 0,0,0,s,0,x,0,0,0,0,0,w,q,0,0,0
 0,0,0,u,0,0,0,0,0,0,0,k,u,v,u,u
 u,u,t,u,0,0,0,0,0,0,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,k,u,v,u,u
 u,u,t,u,0,0,n,0,0,0,0,0,u,0,0,0
-0,0,0,s,0,0,0,0,0,0,0,n,u,0,0,0
-0,0,0,s,z,0,l,0,m,0,0,0,u,0,0,0
+0,0,0,s,0,0,0,0,0,0,z,n,u,0,0,0
+0,0,0,s,z,0,l,0,m,0,y,w,u,0,0,0
 0,0,0,p,u,u,u,0,u,u,u,u,u,0,0,0
 0,0,0,0,0,0,u,0,u,0,0,0,0,0,0,0
 0,0,0,0,0,0,u,0,u,0,0,0,0,0,0,0
 NAME hub_02
-ITM l 7,1
-ITM m 8,1
-ITM n 7,2
 ITM o 8,2
 ITM s 12,8
 ITM q 3,2
@@ -364,6 +378,11 @@ ITM j 8,10
 ITM j 9,10
 ITM j 10,10
 ITM j 11,10
+ITM m 8,1
+ITM n 7,2
+ITM l 7,1
+ITM 13 7,0
+ITM 13 8,0
 EXT 7,15 a 11,0
 EXT 0,9 c 15,8
 EXT 15,8 f 0,8
@@ -543,6 +562,7 @@ ITM r 9,5
 ITM r 13,11
 ITM q 8,5
 ITM 5 9,8
+ITM 14 14,8
 EXT 0,8 g 15,8
 EXT 15,8 i 0,8
 EXT 6,0 j 7,15
@@ -576,6 +596,7 @@ ITM r 13,11
 ITM r 10,14
 ITM r 13,4
 ITM r 3,10
+ITM k 6,8
 EXT 0,8 h 15,8
 PAL 2
 
@@ -603,6 +624,71 @@ ITM v 7,2
 ITM v 8,2
 EXT 7,15 h 6,0
 PAL 3
+
+ROOM k
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,0,a,0,0,0,0,0,0,0
+NAME endingRoom_01
+EXT 7,0 l 7,15
+PAL 4
+
+ROOM l
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+NAME endingRoom_02
+EXT 7,15 k 7,0
+EXT 7,0 m 7,15
+PAL 5
+
+ROOM m
+0,0,0,0,0,0,a,1o,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1n,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1m,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+0,0,0,0,0,0,a,1l,a,0,0,0,0,0,0,0
+NAME endingRoom_03
+EXT 7,15 l 7,0
+END 0 7,0
+PAL 6
 
 TIL 10
 11000010
@@ -735,14 +821,14 @@ TIL 19
 NAME pillar_large_06
 
 TIL a
-10000001
-01000010
-00011000
-00100100
-00100100
-00011000
-01000010
-10000001
+00000000
+00000000
+00000000
+00010000
+00000000
+00000000
+00000000
+00000000
 NAME black brick
 WAL true
 
@@ -1219,6 +1305,50 @@ TIL 1k
 NAME fountain_04
 WAL false
 
+TIL 1l
+10010010
+00000000
+00100100
+00000000
+10010010
+00000000
+00100100
+00000000
+NAME light_dither_01
+
+TIL 1m
+10010011
+00100110
+01001101
+10011010
+00110100
+01101001
+11010010
+10100100
+NAME light_dither_02
+
+TIL 1n
+10101010
+01010101
+11101110
+01010101
+10101010
+01010101
+11101110
+01010101
+NAME light_dither_03
+
+TIL 1o
+11111111
+11111111
+11111111
+11111111
+11111111
+11111111
+11111111
+11111111
+NAME ending_tile
+
 SPR A
 00000000
 00011000
@@ -1228,7 +1358,7 @@ SPR A
 00011000
 00100100
 00100100
-POS b 8,8
+POS b 7,8
 
 SPR a
 00000000
@@ -1252,7 +1382,8 @@ SPR b
 00000000
 00000000
 00000000
-NAME key_torch_01
+NAME key_torch_left
+DLG SPR_5
 POS b 6,6
 
 SPR c
@@ -1264,7 +1395,8 @@ SPR c
 00000000
 00000000
 00000000
-NAME key_torch_01
+NAME key_torch_right
+DLG SPR_6
 POS b 9,6
 
 SPR d
@@ -1316,6 +1448,30 @@ SPR g
 00000001
 NAME key_checker
 DLG SPR_4
+
+SPR h
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME final_door_checker
+DLG SPR_7
+
+SPR i
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME final_door_dialog
+DLG SPR_8
 
 ITM 0
 10000000
@@ -1442,6 +1598,63 @@ ITM 9
 00000000
 NAME tmpKey
 DLG ITM_9
+
+ITM 10
+00001000
+00001100
+00001011
+00001001
+00001010
+00001010
+00001101
+00001101
+NAME final_door_open_02_PERM
+
+ITM 11
+00001101
+00001101
+00001001
+00001011
+00001001
+00000101
+00000011
+00000001
+NAME final_door_open_03_PERM
+
+ITM 12
+10110000
+10110000
+10010000
+10110000
+11010000
+10010000
+10100000
+11000000
+NAME final_door_open_04_PERM
+
+ITM 13
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME trg_ending
+DLG ITM_r
+
+ITM 14
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME trg_startEscape_PERM
+DLG ITM_s
 
 ITM a
 00000000
@@ -1672,6 +1885,7 @@ ITM n
 10000000
 11111111
 NAME finalDoor_03_PERM_SOLID
+DLG ITM_p
 
 ITM o
 00100101
@@ -1683,18 +1897,7 @@ ITM o
 00000001
 11111111
 NAME finalDoor_04_PERM_SOLID
-
-ITM p
-10000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000001
-NAME trg_finalCreature
-DLG ITM_l
+DLG ITM_q
 
 ITM q
 11000000
@@ -1758,6 +1961,7 @@ ITM t
 00000000
 00000000
 NAME torch
+DLG ITM_l
 
 ITM u
 00000000
@@ -1846,6 +2050,17 @@ ITM y
 NAME fountain_water_r_PERM_SOLID
 COL 4
 
+ITM z
+00010000
+00110000
+11010000
+10010000
+01010000
+01010000
+10110000
+10110000
+NAME final_door_open_01_PERM
+
 DLG ITM_0
 """
 Light trickles in through cracks in the walls. You can see a little better now.
@@ -1882,7 +2097,7 @@ DLG ITM_4
 {shk}You feel the ground shaking beneath you. Suddenly the entire room feels like it's falling
 (p)...
 (p)CRAAASH!!!!{shk}
-(jsNow "activateShader(spotlightShader);shaderParams.opacity = 40")
+(jsNow "activateShader(spotlightShader);shaderParams.opacity = 30")
 (exitNow "elevator_bottom")
 """
 
@@ -2016,10 +2231,7 @@ DLG ITM_j
 """
 
 DLG ITM_k
-(js "activateShader(spotlightShader); shaderParams.opacity = 40;")
-
-DLG ITM_l
-...(p)There are sounds coming from the shadows, and you feel something large lurking about. 
+(js "activateShader(spotlightShader); shaderParams.opacity = 30;")
 
 DLG SPR_1
 hmmmm.... yes I see...(p)...(p)Oh, hi! Didn't see you there.(p)Hey I gotta say, you look kind of familiar, have we met before?(p)Maybe I'm thinking of someone else...(p)Anyways, This whole game is built and everything, but I still want to make it bigger. If only I had better tools. (p)Oh well, I guess I'll just have to make it better some other time. In the mean time, DON'T WALK THROUGH THAT TAPE!(p)I haven't built anything there, so it's just an endless void. Wouldn't want such a silly thing to be the end of you.
@@ -2078,6 +2290,60 @@ DLG ITM_n
 }
 """
 
+DLG ITM_l
+(jsNow "pickupTorch()")You pickup a torch off the alter, and it spontaneously ignites.(p)You spy your reflection in a nearby puddle. You're uglier than you remember...{hasTorch = 1}
+
+DLG SPR_5
+"""
+{
+  - hasTorch == 0 ?
+    A large firebasket sits on the floor. It looks like it could be ignited with a real flame. 
+  - torchLit < 2 ?
+    {torchLit = torchLit + 1}(js "lightLeftTorch()")(js "startSpriteDialog(getSpriteId('final_door_checker'))")
+}
+"""
+
+DLG SPR_6
+"""
+{
+  - hasTorch == 0 ?
+    A large firebasket sits on the floor. It looks like it could be ignited with a real flame. 
+  - torchLit < 2 ?
+    {torchLit = torchLit + 1}(js "lightRightTorch()")(js "startSpriteDialog(getSpriteId('final_door_checker'))")
+}
+"""
+
+DLG SPR_7
+"""
+{
+  - torchLit >= 2 ?
+    (js "openDoor()")
+}
+"""
+
+DLG SPR_8
+A large door stands in front of you. The patterns engraved on it's surface are intricately detailed.(p)It's too heavy to push open, but there might be a way to open it.
+
+DLG ITM_p
+(js "startSpriteDialog(getSpriteId('final_door_dialog'))")
+
+DLG ITM_q
+(js "startSpriteDialog(getSpriteId('final_door_dialog'))")
+
+DLG ITM_r
+(jsNow "triggerEnding()")(exit "endingRoom_01, 7, 15")
+
+DLG ITM_s
+"""
+{
+  - hasTorch == 1 ?
+    The light seems to irritate the creature in the darkness, and you know the light from your torch is the only thing keeping it at bay.(p)...but the torch is running out(js "removeItem('trg_startEscape_PERM')")(js "startEscape()")
+}
+"""
+
+END 0
+Fresh air fills your lungs, and your eyes burn from the sunlight.(p)Even now, just moments after the ordeal, that horrible place is beginning to fade from memory.(p)...if only it were that easy.
+
 VAR toe_tile
 0
 
@@ -2103,5 +2369,11 @@ VAR hasLimb
 0
 
 VAR searchedCorpse
+0
+
+VAR hasTorch
+0
+
+VAR torchLit
 0
 

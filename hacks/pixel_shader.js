@@ -186,7 +186,13 @@ function spotlightShader(args, canvasIn){
 			opacity : 50,
 			fuzz : true,
 			fuzziness : 12,
-			followPlayer : true
+			followPlayer : true,
+			flies : 0.3,
+			colorMix : false,
+			mixColor : [255, 106, 0],
+			mixAmt : 5,
+			flicker : true,
+			flickerAmp : 0.04
 		}
 	}
 
@@ -203,9 +209,20 @@ function spotlightShader(args, canvasIn){
 		dist += (Math.random() * shaderParams.fuzziness) - (shaderParams.fuzziness / 2);
 	}
 
-	let clamp = (dist > 1) ? 1 - (shaderParams.opacity / 100) : 1;
+	let spotlight = (dist > 1) ? 1 - (shaderParams.opacity / 100) : 1;
+	spotlight -= Math.random() * shaderParams.flies;
 
-	args.pixel.r = args.pixel.r * clamp;
-	args.pixel.g = args.pixel.g * clamp;
-	args.pixel.b = args.pixel.b * clamp;
+	if (shaderParams.flicker){
+		spotlight -= (Math.sin(time * 0.2) + 1) * shaderParams.flickerAmp;
+	}
+
+	if (shaderParams.colorMix){
+		args.pixel.r *= (shaderParams.mixColor[0] * shaderParams.mixAmt) / 255;
+		args.pixel.g *= (shaderParams.mixColor[1] * shaderParams.mixAmt) / 255;
+		args.pixel.b *= (shaderParams.mixColor[2] * shaderParams.mixAmt) / 255;
+	}
+
+	args.pixel.r = args.pixel.r * spotlight;
+	args.pixel.g = args.pixel.g * spotlight;
+	args.pixel.b = args.pixel.b * spotlight;
 }

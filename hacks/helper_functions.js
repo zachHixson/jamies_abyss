@@ -14,6 +14,14 @@ function getSpriteId(spriteName){
 	}
 }
 
+function getTileId(tileName){
+	for (let t in tile){
+		if (tile[t].name == tileName){
+			return tile[t].id;
+		}
+	}
+}
+
 function getItemFromList(itemId){
 	for (idx in item){
 		if (item[idx].id == itemId){
