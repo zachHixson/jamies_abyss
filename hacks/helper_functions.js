@@ -128,14 +128,14 @@ let dialogChoices = {
 	"takeLimb" :
 `{choice
 	- Take
-	  The limb makes a cracking sound as you tear it away from the body(p)[You picked up a limb... Why would you do that?]{hasLimb = 1}
+	  The limb makes a cracking sound as you tear it away from the body(p)[You picked up {alert}a limb{alert}... Why would you do that?]{hasLimb = 1}
 	- Leave
 	  It's never wise to disturb the dead.
 }`,
 	"useLimb" :
 `{choice
 	- Use arm taken from corpse
-	  You use the arm to fish out something down below. It's another broken piece of the object.(p)[You gained another broken piece]{keyPieces = keyPieces + 1}{hasLimb = 2}{hasSearched = 2}(js "startSpriteDialog(getSpriteId('key_checker'))")
+	  You use the arm to fish out something down below. It's another broken piece of the object.(p)[You gained another {alert}broken piece{alert}]{keyPieces = keyPieces + 1}{hasLimb = 2}{hasSearched = 2}(js "startSpriteDialog(getSpriteId('key_checker'))")
 	- Don't use
 	  Using a corpse's arm for your own purpose just seems wrong.
 }`

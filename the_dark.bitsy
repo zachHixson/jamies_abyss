@@ -2133,7 +2133,7 @@ DLG ITM_7
 """
 {
   - hasSphereKey < 1 ?
-    You reach out with your hands and feel a smooth surface with a round hole in the middle. What could this be?
+    You reach out with your hands and feel a smooth surface with a {alert}round hole{alert} in the middle. What could this be?
   - hasSphereKey >= 1 ?
     You Place the sphere gifted to you by the old man into the slot.
     (p)The door opens.
@@ -2156,7 +2156,7 @@ DLG SPR_0
     (p)...
     (p)"All is not lost though. Even fools such as yourself are not trapped completely."
     (p)"This is the only thing I can give you to help you along your way."
-    (p)He proceeds to hand you what feels like a small ball.(p)[You gained a small sphere]{hasSphereKey = 1}
+    (p)He proceeds to hand you what feels like a small ball.(p)[You gained a small {alert}sphere{alert}]{hasSphereKey = 1}
   - hasSphereKey >= 1 ?
     "Do not linger here long. The shadows will swallow you whole."
 }
@@ -2215,7 +2215,7 @@ DLG ITM_f
   - keyCreatureState == 2 ?
     The mass writhes and shrieks in pain as you plunge your hand through it's flesh and a horrible smell fills the room. Your fingers tips start to feel something.(rTag "keyCreatureChoice_dig")
   - keyCreatureState == 3 ?
-    (js "swapItem('key_creature_PERM_SOLID', 'key_creature_dead_PERM_SOLID')")The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object from the now motionless pile of flesh.(p)[You gained a small cube]{hasCubeKey = 1}
+    (js "swapItem('key_creature_PERM_SOLID', 'key_creature_dead_PERM_SOLID')")The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object from the now motionless pile of flesh.(p)[You gained a {alert}small cube{alert}]{hasCubeKey = 1}
 }
 """
 
@@ -2229,7 +2229,7 @@ DLG ITM_i
 """
 {
   - hasCubeKey <= 0 ?
-    Your fingers run across the surface of the wall and you feel a small recess in the stone. It's geometric, like a square. 
+    Your fingers run across the surface of the wall and you feel a small recess in the stone. It's geometric, {alert}like a square{alert}. 
   - hasCubeKey >= 1 ?
     You take the small cube that you pulled from the creature and place it in the slot. It fits perfectly.(p){shk}RUMBLE{shk}(p)The wall slides down into the floor and reveals a passageway.(js "removeItem('keyDoor_cube_PERM_SOLID')")
 }
@@ -2239,9 +2239,9 @@ DLG ITM_j
 """
 {
   - keyPieces == 0 ?
-    You found a small item on the floor. It looks like it could be a piece of something.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
+    You found a small item on the floor. It looks like it could be {alert}a piece of something{alert}.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
   - keyPieces < 5 ?
-    You found another small piece of something on the ground. It looks similar to the others you found.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
+    You found another small piece of {alert}a curved object{alert}. It looks similar to the others you found.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
 }
 """
 
@@ -2272,7 +2272,7 @@ DLG SPR_2
 """
 {
   - searchedCorpse == 0 ?
-    You find a corpse laying on the ground. It's almost unrecognizable as human. Whatever killed it was large.(p)You search it and find a broken piece of an object in it's hand.(p)[You gained a broken piece]{keyPieces = keyPieces + 1}
+    You find a corpse laying on the ground. It's almost unrecognizable as human. Whatever killed it was large.(p)You search it and find a broken piece of an object in it's hand.(p)[You gained {alert}a broken piece{alert}]{keyPieces = keyPieces + 1}
     {searchedCorpse = 1}
   - searchedCorpse > 0 ?
 
@@ -2291,28 +2291,32 @@ DLG SPR_4
 """
 {
   - keyPieces == 5 ?
-    You hold all the pieces of the object out in front of you and realize they form a ring shape when put together.{keyPieces = 6}
+    You hold all the pieces of the object out in front of you and realize they form {alert}a ring{alert} when put together.{keyPieces = 6}
 }
 """
 
 DLG ITM_n
 """
 {
+  - keyPieces < 2 ?
+    Another wall with an deep carving. From what you can tell the cutout is in the {alert}shape of a ring{alert}. 
   - keyPieces < 5 ?
-    Another wall with an deep carving. From what you can tell the cutout is in the shape of a ring. 
+    {keyRemaining = 5 - keyPieces}(p)You place the {alert}Broken pieces{alert} of the object into the slot, but it looks like you need {alert}
+    {say keyRemaining}
+{alert} more.
   - keyPieces >= 5 ?
-    The door falls to the floor. Stale air flows out of the passageway.(soundeffectNow "creature_shriek_01")(jsNow "removeItem('keyDoor_pieces_PERM_SOLID')")(p)...(p)You get the feeling that this door was sealed for a reason...
+    You place the {alert}assembled ring{alert} into the door. (p)The door falls to the floor. Stale air flows out of the passageway.(soundeffectNow "creature_shriek_01")(jsNow "removeItem('keyDoor_pieces_PERM_SOLID')")(p)...(p)You get the feeling that this door was sealed for a reason...
 }
 """
 
 DLG ITM_l
-(jsNow "pickupTorch()")You pickup a torch off the alter, and it spontaneously ignites.(p)It's the first {clr7}real fire{clr7} you have seen in a long while.(p)You spy your reflection in a nearby puddle.(p)You're uglier than you remember...{hasTorch = 1}
+(jsNow "pickupTorch()")You pickup a torch off the alter, and it spontaneously ignites.(p)It's the first {alert}real fire{alert} you have seen in a long while.(p)You spy your reflection in a nearby puddle.(p)You're uglier than you remember...{hasTorch = 1}
 
 DLG SPR_5
 """
 {
   - hasTorch == 0 ?
-    A large firebasket sits on the floor.(p)It looks like it could be ignited with a {clr4}real flame{clr4}. 
+    A large firebasket sits on the floor.(p)It looks like it could be ignited with a {alert}real flame{alert}. 
   - leftTorch == 0 ?
     {leftTorch = 1}
 {torchLit = torchLit + 1}(js "lightLeftTorch()")(js "startSpriteDialog(getSpriteId('final_door_checker'))")
@@ -2323,7 +2327,7 @@ DLG SPR_6
 """
 {
   - hasTorch == 0 ?
-    A large firebasket sits on the floor.(p)It looks like it could be ignited with a {clr7}real flame{clr7}.
+    A large firebasket sits on the floor.(p)It looks like it could be ignited with a {alert}real flame{alert}. 
   - torchLit < 2 ?
     {torchLit = torchLit + 1}(js "lightRightTorch()")(js "startSpriteDialog(getSpriteId('final_door_checker'))")
 }
@@ -2338,7 +2342,7 @@ DLG SPR_7
 """
 
 DLG SPR_8
-A large door stands in front of you. The patterns engraved on it's surface are intricately detailed.(p)It's too heavy to push open, but there might be a way to open it.
+A large door stands in front of you. The patterns engraved on it's surface are intricately detailed.(p)It's too heavy to push open, but there might be {alert}another way to open it{alert}.
 
 DLG ITM_p
 (js "startSpriteDialog(getSpriteId('final_door_dialog'))")
@@ -2379,7 +2383,7 @@ VAR keyCreatureState
 0
 
 VAR keyPieces
-5
+6
 
 VAR hasSearched
 0
@@ -2400,5 +2404,8 @@ VAR leftTorch
 0
 
 VAR rightTorch
+0
+
+VAR keyRemaining
 0
 
