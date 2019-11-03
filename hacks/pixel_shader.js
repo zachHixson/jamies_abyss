@@ -183,7 +183,7 @@ function spotlightShader(args, canvasIn){
 			x : canvas.width / 2,
 			y : canvas.height / 2,
 			radius : 100,
-			opacity : 50,
+			opacity : 30,
 			fuzz : true,
 			fuzziness : 12,
 			followPlayer : true,
@@ -225,4 +225,17 @@ function spotlightShader(args, canvasIn){
 	args.pixel.r = args.pixel.r * spotlight;
 	args.pixel.g = args.pixel.g * spotlight;
 	args.pixel.b = args.pixel.b * spotlight;
+}
+
+function blackout(args, canvasIn){
+	if (shaderParams && shaderParams.name != "blackout"){
+		for (let p in shaderParams){delete shaderParams[p]}
+		shaderParams = {
+			name : "blackout",
+		}
+	}
+
+	args.pixel.r = 0;
+	args.pixel.g = 0;
+	args.pixel.b = 0;
 }

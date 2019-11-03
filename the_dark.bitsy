@@ -167,7 +167,6 @@ ITM 5 2,8
 ITM 5 10,9
 ITM 5 11,8
 ITM j 1,9
-ITM k 6,5
 EXT 6,3 3 8,11
 EXT 15,7 5 0,8
 PAL 2
@@ -374,10 +373,6 @@ ITM q 3,2
 ITM r 12,11
 ITM r 5,13
 ITM r 12,4
-ITM j 8,10
-ITM j 9,10
-ITM j 10,10
-ITM j 11,10
 ITM m 8,1
 ITM n 7,2
 ITM l 7,1
@@ -596,7 +591,6 @@ ITM r 13,11
 ITM r 10,14
 ITM r 13,4
 ITM r 3,10
-ITM k 6,8
 EXT 0,8 h 15,8
 PAL 2
 
@@ -1091,6 +1085,7 @@ TIL v
 10000001
 11111111
 NAME undg_04
+WAL true
 
 TIL w
 11000011
@@ -1358,7 +1353,7 @@ SPR A
 00011000
 00100100
 00100100
-POS b 7,8
+POS 0 5,7
 
 SPR a
 00000000
@@ -1472,6 +1467,18 @@ SPR i
 00000001
 NAME final_door_dialog
 DLG SPR_8
+
+SPR j
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME death_creature
+DLG SPR_9
 
 ITM 0
 10000000
@@ -2231,7 +2238,7 @@ DLG ITM_j
 """
 
 DLG ITM_k
-(js "activateShader(spotlightShader); shaderParams.opacity = 30;")
+(js "activateShader(spotlightShader)")
 
 DLG SPR_1
 hmmmm.... yes I see...(p)...(p)Oh, hi! Didn't see you there.(p)Hey I gotta say, you look kind of familiar, have we met before?(p)Maybe I'm thinking of someone else...(p)Anyways, This whole game is built and everything, but I still want to make it bigger. If only I had better tools. (p)Oh well, I guess I'll just have to make it better some other time. In the mean time, DON'T WALK THROUGH THAT TAPE!(p)I haven't built anything there, so it's just an endless void. Wouldn't want such a silly thing to be the end of you.
@@ -2340,6 +2347,9 @@ DLG ITM_s
     The light seems to irritate the creature in the darkness, and you know the light from your torch is the only thing keeping it at bay.(p)...but the torch is running out(js "removeItem('trg_startEscape_PERM')")(js "startEscape()")
 }
 """
+
+DLG SPR_9
+The light from your torch burns out, and you keep running in through the darkness.(p)You cannot see anything, but you don't dare stop.(p)You feel something sharp hit you in the back, and you fall to the floor, unable to breath.(p)A slimy tentacle begins to wrap itself around your chest, and then your head.(p)You cannot breath, and everything goes even darker than it was.(p)...(p)This is the end for you.{hasTorch = 0}(jsNow "respawn()")(exitNow "hub_02, 10, 8")
 
 END 0
 Fresh air fills your lungs, and your eyes burn from the sunlight.(p)Even now, just moments after the ordeal, that horrible place is beginning to fade from memory.(p)...if only it were that easy.

@@ -22,6 +22,14 @@ function getTileId(tileName){
 	}
 }
 
+function getRoomId(roomName){
+	for (let i in room){
+		if (room[i].name == roomName){
+			return room[i].id;
+		}
+	}
+}
+
 function getItemFromList(itemId){
 	for (idx in item){
 		if (item[idx].id == itemId){
@@ -43,6 +51,24 @@ function spawnItem(itemId, xIn, yIn){
 		id:itemId,
 		x: xIn,
 		y: yIn
+	});
+}
+
+function spawnItemInRoom(itemName, xIn, yIn, roomName){
+	let itmId = getItemId(itemName);
+	let roomId;
+
+	if (roomName == undefined){
+		roomId = getRoom().id;
+	}
+	else{
+		roomId = getRoomId(roomName);
+	}
+
+	room[roomId].items.push({
+		id : itmId,
+		x : xIn,
+		y : yIn
 	});
 }
 

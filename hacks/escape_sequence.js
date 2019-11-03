@@ -1,8 +1,9 @@
-let startRadius = 200;
+let startRadius;
 let timer = 20;
 let timerInterval;
 
 function pickupTorch(){
+    startRadius = 200;
     shaderParams.colorMix = true;
     shaderParams.radius = startRadius;
     shaderParams.opacity = 70;
@@ -40,7 +41,14 @@ function openDoor(){
 
 function triggerDeath(){
     clearInterval(timerInterval);
-    console.log("You died");
+    activateShader(blackout);
+    spawnItemInRoom('torch', 9, 8, 'torch_alter');
+    spawnItemInRoom('trg_startEscape_PERM', 14, 8, 'row_pillars');
+    startSpriteDialog(getSpriteId('death_creature'));
+}
+
+function respawn(){
+    activateShader(spotlightShader);
 }
 
 function triggerEnding(){
