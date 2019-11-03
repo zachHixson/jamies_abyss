@@ -15,14 +15,14 @@ NAME dark
 0,0,0
 42,42,42
 92,92,92
-255,0,0
+80,0,0
 
 PAL 2
 NAME underground
 0,0,0
 42,30,21
 76,72,60
-255,0,0
+80,0,0
 71,0,68
 138,0,50
 
@@ -140,6 +140,8 @@ ITM 5 8,6
 ITM 5 2,8
 ITM 5 10,9
 ITM 5 11,8
+ITM j 1,9
+ITM k 6,5
 EXT 6,3 3 8,11
 EXT 15,7 5 0,8
 PAL 2
@@ -566,7 +568,7 @@ SPR A
 10111101
 00100100
 00100100
-POS 0 5,7
+POS 4 6,4
 
 SPR a
 00000000
@@ -871,6 +873,39 @@ ITM i
 NAME keyDoor_cube_PERM_SOLID
 DLG ITM_i
 
+ITM j
+00000000
+00000000
+00000000
+00010000
+00101000
+00010000
+00000000
+00000000
+>
+00000000
+00000000
+00000000
+00101000
+00010000
+00101000
+00000000
+00000000
+NAME key_piece
+DLG ITM_j
+
+ITM k
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME dbg_shader_trigger
+DLG ITM_k
+
 DLG ITM_0
 """
 Light trickles in through cracks in the walls. You can see a little better now.
@@ -1030,6 +1065,21 @@ DLG ITM_i
 }
 """
 
+DLG ITM_j
+"""
+{
+  - keyPieces == 0 ?
+    You found a small item on the floor. It looks like it could be a piece of something.{keyPieces = keyPieces + 1}
+  - keyPieces < 3 ?
+    You found another small piece of something on the ground. It looks similar to the others you found.{keyPieces = keyPieces + 1}
+  - keyPieces >= 3 ?
+    You found yet another piece. You hold them next to each other and realize they form a key.{keyPieces = keyPieces + 1}
+}
+"""
+
+DLG ITM_k
+(js "activateShader(spotlightShader); shaderParams.opacity = 40;")
+
 VAR toe_tile
 0
 
@@ -1043,5 +1093,8 @@ VAR hasCubeKey
 0
 
 VAR keyCreatureState
+0
+
+VAR keyPieces
 0
 
