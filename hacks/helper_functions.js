@@ -51,7 +51,7 @@ let dialogChoices = {
 	"firstCreatureChoice" :
 `{choice
 	- Touch it
-		... (end "In the inky darkness you reach your hand forward. (p)At first your hand touches nothing but air.(p)You hear a wet gurgling sound followed by an animalistic grunt. Suddenly your hand is engulfed by what feels like an esophagus lined with teeth as your arm is sucked further and further in.(p)You hear a shrieking sound. (p)It sounds strangely human(p)It's only after your head is enveloped that you realize the shrieking was coming from you.")
+		... (js "deactivateShader()")(end "In the inky darkness you reach your hand forward. (p)At first your hand touches nothing but air.(p)You hear a wet gurgling sound followed by an animalistic grunt. Suddenly your hand is engulfed by what feels like an esophagus lined with teeth as your arm is sucked further and further in.(p)You hear a shrieking sound. (p)It sounds strangely human(p)It's only after your head is enveloped that you realize the shrieking was coming from you.")
 	- Leave it alone
 		You left it alone{touchedCreature = 2}
 }`,
