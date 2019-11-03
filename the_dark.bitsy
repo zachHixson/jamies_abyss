@@ -190,8 +190,6 @@ u,u,u,0,m,n,0,0,0,j,n,j,e,0,t,t
 0,0,0,0,0,u,0,u,0,0,0,0,0,0,0,0
 NAME hub_01
 ITM 6 5,2
-ITM 9 9,4
-ITM h 10,4
 ITM i 14,8
 EXT 0,8 4 15,7
 EXT 6,15 6 6,4
@@ -378,6 +376,7 @@ ITM n 7,2
 ITM l 7,1
 ITM 13 7,0
 ITM 13 8,0
+ITM j 5,8
 EXT 7,15 a 11,0
 EXT 0,9 c 15,8
 EXT 15,8 f 0,8
@@ -2232,7 +2231,7 @@ DLG ITM_j
 {
   - keyPieces == 0 ?
     You found a small item on the floor. It looks like it could be a piece of something.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
-  - keyPieces < 4 ?
+  - keyPieces < 5 ?
     You found another small piece of something on the ground. It looks similar to the others you found.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
 }
 """
@@ -2264,8 +2263,8 @@ DLG SPR_2
 """
 {
   - searchedCorpse == 0 ?
-    You find a corpse laying on the ground. It's almost unrecognizable as human. Whatever killed it was large.(p)You search it and find another broken piece of the object in it's hand.(p)[You gained another broken piece]{keyPieces = keyPieces + 1}
-{searchedCorpse = 1}
+    You find a corpse laying on the ground. It's almost unrecognizable as human. Whatever killed it was large.(p)You search it and find a broken piece of an object in it's hand.(p)[You gained a broken piece]{keyPieces = keyPieces + 1}
+    {searchedCorpse = 1}
   - searchedCorpse > 0 ?
 
 }{
@@ -2282,17 +2281,17 @@ DLG SPR_3
 DLG SPR_4
 """
 {
-  - keyPieces == 4 ?
-    You hold all the pieces of the object out in front of you and realize they form a ring shape when put together.{keyPieces = 5}
+  - keyPieces == 5 ?
+    You hold all the pieces of the object out in front of you and realize they form a ring shape when put together.{keyPieces = 6}
 }
 """
 
 DLG ITM_n
 """
 {
-  - keyPieces < 4 ?
+  - keyPieces < 5 ?
     Another wall with an deep carving. From what you can tell the cutout is in the shape of a ring. 
-  - keyPieces >= 4 ?
+  - keyPieces >= 5 ?
     The door falls to the floor. Stale air flows out of the passageway.(p)...(p)You get the feeling that this door was sealed for a reason...(js "removeItem('keyDoor_pieces_PERM_SOLID')")
 }
 """
