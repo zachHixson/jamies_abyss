@@ -360,14 +360,18 @@ ITM q 3,2
 ITM r 12,11
 ITM r 5,13
 ITM r 12,4
+ITM j 8,10
+ITM j 9,10
+ITM j 10,10
+ITM j 11,10
 EXT 7,15 a 11,0
 EXT 0,9 c 15,8
 EXT 15,8 f 0,8
 PAL 2
 
 ROOM c
+0,0,0,0,0,0,u,0,u,0,0,0,0,0,0,0
 0,0,0,0,0,0,u,0,u,u,u,0,0,0,0,0
-0,0,0,0,0,0,u,0,0,n,u,0,0,0,0,0
 0,0,0,0,0,0,u,z,w,0,o,0,0,0,0,0
 0,0,0,0,0,0,u,x,z,0,u,0,0,0,0,0
 0,0,0,0,0,0,u,10,0,0,u,0,0,0,0,0
@@ -380,8 +384,8 @@ ROOM c
 0,0,0,0,0,0,u,y,z,0,u,0,0,0,0,0
 0,0,0,0,0,0,u,x,0,10,u,0,0,0,0,0
 0,0,0,0,0,0,u,n,0,0,u,0,0,0,0,0
-0,0,0,0,0,0,u,0,0,0,u,0,0,0,0,0
 0,0,0,0,0,0,u,0,u,u,u,0,0,0,0,0
+0,0,0,0,0,0,u,0,u,0,0,0,0,0,0,0
 NAME t_room
 ITM r 10,6
 ITM r 6,9
@@ -407,7 +411,7 @@ ROOM d
 0,0,u,0,w,z,w,0,0,0,0,0,n,n,u,0
 0,0,u,0,0,y,0,0,0,0,0,0,w,10,o,0
 0,0,u,n,0,0,0,0,0,0,0,0,0,0,u,0
-0,0,u,0,0,0,0,0,0,0,0,0,0,n,u,0
+0,0,u,0,0,0,0,1i,1j,1k,0,0,0,n,u,0
 0,0,s,u,u,v,t,t,t,t,t,v,u,u,s,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -425,6 +429,9 @@ ITM r 12,10
 ITM r 2,9
 ITM r 6,4
 ITM r 14,10
+ITM w 7,9
+ITM x 8,9
+ITM y 9,9
 EXT 8,0 c 7,15
 PAL 2
 
@@ -535,6 +542,7 @@ ITM q 4,11
 ITM r 9,5
 ITM r 13,11
 ITM q 8,5
+ITM 5 9,8
 EXT 0,8 g 15,8
 EXT 15,8 i 0,8
 EXT 6,0 j 7,15
@@ -1175,6 +1183,42 @@ TIL 1h
 NAME secret_wall
 WAL false
 
+TIL 1i
+00000111
+00001000
+00010011
+00100100
+01001000
+01010000
+01010000
+01010000
+NAME fountain_01
+WAL false
+
+TIL 1j
+11111111
+00000000
+11111111
+00000000
+00000000
+00000000
+00011000
+00011000
+NAME fountain_02
+WAL false
+
+TIL 1k
+11100000
+00010000
+11001000
+00100100
+00010010
+00001010
+00001010
+00001010
+NAME fountain_04
+WAL false
+
 SPR A
 00000000
 00011000
@@ -1184,7 +1228,7 @@ SPR A
 00011000
 00100100
 00100100
-POS h 5,8
+POS b 8,8
 
 SPR a
 00000000
@@ -1235,6 +1279,43 @@ SPR d
 NAME construction_worker
 DLG SPR_1
 POS j 9,5
+
+SPR e
+00011100
+10010011
+01101011
+00100000
+01000000
+00000000
+00000000
+00000000
+NAME corpse
+DLG SPR_2
+POS e 7,5
+
+SPR f
+10000000
+00000000
+00011000
+00010000
+00010000
+00011000
+00011000
+00000001
+NAME sayKey
+DLG SPR_3
+
+SPR g
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME key_checker
+DLG SPR_4
 
 ITM 0
 10000000
@@ -1665,6 +1746,7 @@ ITM s
 11111111
 10011001
 NAME keyDoor_pieces_PERM_SOLID
+DLG ITM_n
 
 ITM t
 00000000
@@ -1699,6 +1781,70 @@ ITM v
 00000001
 NAME trg_void_ending
 DLG ITM_m
+
+ITM w
+00000000
+00000000
+00000000
+00000011
+00000111
+00001111
+00001110
+00001101
+>
+00000000
+00000000
+00000000
+00000011
+00000110
+00001101
+00001011
+00001011
+NAME fountain_water_l_PERM_SOLID
+COL 4
+
+ITM x
+00000000
+00000000
+00000000
+11111111
+11111111
+11000011
+00100100
+11100111
+>
+00000000
+00000000
+00000000
+11111111
+00000000
+11111111
+11100111
+11100111
+NAME fountain_water_c_PERM_SOLID
+DLG ITM_o
+COL 4
+
+ITM y
+00000000
+00000000
+00000000
+11000000
+11100000
+11110000
+01110000
+10110000
+>
+00000000
+00000000
+00000000
+11000000
+01100000
+10110000
+11010000
+11010000
+NAME fountain_water_r_PERM_SOLID
+COL 4
 
 DLG ITM_0
 """
@@ -1780,7 +1926,7 @@ DLG SPR_0
     (p)...
     (p)"All is not lost though. Even fools such as yourself are not trapped completely."
     (p)"This is the only thing I can give you to help you along your way."
-    (p)He proceeds to hand you what feels like a small ball. {hasSphereKey = 1}
+    (p)He proceeds to hand you what feels like a small ball.(p)[You gained a small sphere]{hasSphereKey = 1}
   - hasSphereKey >= 1 ?
     "Do not linger here long. The shadows will swallow you whole."
 }
@@ -1839,7 +1985,7 @@ DLG ITM_f
   - keyCreatureState == 2 ?
     The mass writhes and shrieks in pain as you plunge your hand through it's flesh and a horrible smell fills the room. Your fingers tips start to feel something.(rTag "keyCreatureChoice_dig")
   - keyCreatureState == 3 ?
-    (js "swapItem('key_creature_PERM_SOLID', 'key_creature_dead_PERM_SOLID')")The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object from the now motionless pile of flesh.{hasCubeKey = 1}
+    (js "swapItem('key_creature_PERM_SOLID', 'key_creature_dead_PERM_SOLID')")The noises slowly fade away and silence once again fills the room. You keep digging and remove a small cube shaped object from the now motionless pile of flesh.(p)[You gained a small cube]{hasCubeKey = 1}
 }
 """
 
@@ -1863,11 +2009,9 @@ DLG ITM_j
 """
 {
   - keyPieces == 0 ?
-    You found a small item on the floor. It looks like it could be a piece of something.{keyPieces = keyPieces + 1}
-  - keyPieces < 3 ?
-    You found another small piece of something on the ground. It looks similar to the others you found.{keyPieces = keyPieces + 1}
-  - keyPieces >= 3 ?
-    You found yet another piece. You hold them next to each other and realize they form a key.{keyPieces = keyPieces + 1}
+    You found a small item on the floor. It looks like it could be a piece of something.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
+  - keyPieces < 4 ?
+    You found another small piece of something on the ground. It looks similar to the others you found.{keyPieces = keyPieces + 1}(js "startSpriteDialog(getSpriteId('key_checker'))")
 }
 """
 
@@ -1881,7 +2025,58 @@ DLG SPR_1
 hmmmm.... yes I see...(p)...(p)Oh, hi! Didn't see you there.(p)Hey I gotta say, you look kind of familiar, have we met before?(p)Maybe I'm thinking of someone else...(p)Anyways, This whole game is built and everything, but I still want to make it bigger. If only I had better tools. (p)Oh well, I guess I'll just have to make it better some other time. In the mean time, DON'T WALK THROUGH THAT TAPE!(p)I haven't built anything there, so it's just an endless void. Wouldn't want such a silly thing to be the end of you.
 
 DLG ITM_m
-(js "deactivateShader()")(end "You take a step and your foot touches nothing but empty air. Is it even air at all, or just nothing?(p)"What did I tell you! I say, some people are immune to good advice..."")
+(jsNow "deactivateShader()")You take a step and your foot touches nothing but empty air. Is it even air at all, or just nothing?(p)"What did I tell you! I say, some people are immune to good advice..."(end "You died by falling into the void")
+
+DLG ITM_o
+"""
+{
+  - hasSearched == 0 ?
+    You approach a fountain that contains a foul smelling liquid. You can see something deep down.(rTag "fountainSearch")
+  - hasLimb == 0 ?
+    Your hand burns as you touch the surface. It's impossible to reach whatever is in there at the moment.
+  - hasLimb == 1 ?
+    Your hand burns as you touch the surface. There's no way you can grab whatever is in there.(rTag "useLimb")
+  - hasSearched == 2 ?
+    The fountain still smells pretty bad.
+}
+"""
+
+DLG SPR_2
+"""
+{
+  - searchedCorpse == 0 ?
+    You find a corpse laying on the ground. It's almost unrecognizable as human. Whatever killed it was large.(p)You search it and find another broken piece of the object in it's hand.(p)[You gained another broken piece]{keyPieces = keyPieces + 1}
+{searchedCorpse = 1}
+  - searchedCorpse > 0 ?
+
+}{
+  - hasLimb == 0 ?
+    (p)The corpse's limbs are barely attached. Rip one off and take it with you?(rTag "takeLimb")
+  - hasLimb == 1 ?
+    You've already done enough to this corpse. You should leave it alone. 
+}
+"""
+
+DLG SPR_3
+{say keyPieces}
+
+DLG SPR_4
+"""
+{
+  - keyPieces == 4 ?
+    You hold all the pieces of the object out in front of you and realize they form a ring shape when put together.{keyPieces = 5}
+}
+"""
+
+DLG ITM_n
+"""
+{
+  - keyPieces < 4 ?
+    Another wall with an deep carving. From what you can tell the cutout is in the shape of a ring. 
+  - keyPieces >= 4 ?
+    The door falls to the floor. Stale air flows out of the passageway.(p)...(p)You get the feeling that this door was sealed for a reason...(js "removeItem('keyDoor_pieces_PERM_SOLID')")
+}
+"""
 
 VAR toe_tile
 0
@@ -1899,5 +2094,14 @@ VAR keyCreatureState
 0
 
 VAR keyPieces
+0
+
+VAR hasSearched
+0
+
+VAR hasLimb
+0
+
+VAR searchedCorpse
 0
 

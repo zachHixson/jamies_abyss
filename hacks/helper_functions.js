@@ -6,6 +6,14 @@ function getItemId(itemName){
 	}
 }
 
+function getSpriteId(spriteName){
+	for (let idx in sprite){
+		if (sprite[idx].name == spriteName){
+			return sprite[idx].id;
+		}
+	}
+}
+
 function getItemFromList(itemId){
 	for (idx in item){
 		if (item[idx].id == itemId){
@@ -75,6 +83,27 @@ let dialogChoices = {
 	  Seeing this creature in pain is just too much.(p)You decide to stop for now.
 	- Keep Digging
 	  ...{keyCreatureState = 3}(js "startItemDialog(getItemId('key_creature_PERM_SOLID', item))")
+}`,
+	"fountainSearch" :
+`{choice
+	- Search
+	  You decide to search the fountain{hasSearched = 1}(js "startItemDialog(getItemId('fountain_water_c_PERM_SOLID'))")
+	- Leave
+	  You don't like the color of the liquid very much, so you walk away.
+}`,
+	"takeLimb" :
+`{choice
+	- Take
+	  The limb makes a cracking sound as you tear it away from the body(p)[You picked up a limb... Why would you do that?]{hasLimb = 1}
+	- Leave
+	  It's never wise to disturb the dead.
+}`,
+	"useLimb" :
+`{choice
+	- Use arm
+	  You use the arm to fish out something down below. It's another broken piece of the object.(p)[You gained another broken piece]{keyPieces = keyPieces + 1}{hasLimb = 2}{hasSearched = 2}(js "startSpriteDialog(getSpriteId('key_checker'))")
+	- Don't use
+	  Using a corpse's arm for your own purpose just seems wrong.
 }`
 }
 
