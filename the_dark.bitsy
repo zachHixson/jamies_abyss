@@ -590,6 +590,7 @@ ITM r 13,11
 ITM r 10,14
 ITM r 13,4
 ITM r 3,10
+ITM k 6,8
 EXT 0,8 h 15,8
 PAL 2
 
@@ -757,6 +758,7 @@ TIL 14
 01111100
 11001100
 NAME pillar_large_01
+WAL true
 
 TIL 15
 11100111
@@ -768,6 +770,7 @@ TIL 15
 11011011
 11111111
 NAME pillar_large_02
+WAL true
 
 TIL 16
 11000000
@@ -779,6 +782,7 @@ TIL 16
 00111111
 00110011
 NAME pillar_large_03
+WAL true
 
 TIL 17
 11111111
@@ -790,6 +794,7 @@ TIL 17
 11111111
 11111111
 NAME pillar_large_04
+WAL true
 
 TIL 18
 00110011
@@ -801,6 +806,7 @@ TIL 18
 11100000
 11000000
 NAME pillar_large_05
+WAL true
 
 TIL 19
 11111111
@@ -812,6 +818,7 @@ TIL 19
 11111111
 11100111
 NAME pillar_large_06
+WAL true
 
 TIL a
 00000000
@@ -1180,6 +1187,7 @@ TIL 1a
 00000111
 00000011
 NAME pillar_large_07
+WAL true
 
 TIL 1b
 11111111
@@ -1191,6 +1199,7 @@ TIL 1b
 11111111
 11111111
 NAME pillar_large_08
+WAL true
 
 TIL 1c
 00000000
@@ -1352,7 +1361,7 @@ SPR A
 00011000
 00100100
 00100100
-POS 0 5,7
+POS b 8,8
 
 SPR a
 00000000
@@ -2099,10 +2108,10 @@ You stepped in a puddle. Your sock is now soaked.
 
 DLG ITM_4
 """
-(jsNow "activateShader(shakeShader)")
+(jsNow "activateShader(shakeShader)")(musicNow "earthquake")
 {shk}You feel the ground shaking beneath you. Suddenly the entire room feels like it's falling
 (p)...
-(p)CRAAASH!!!!{shk}
+(p)CRAAASH!!!!{shk}(musicNow "S")(soundeffectNow "crash")
 (jsNow "activateShader(spotlightShader);shaderParams.opacity = 30")
 (exitNow "elevator_bottom")
 """
@@ -2292,20 +2301,21 @@ DLG ITM_n
   - keyPieces < 5 ?
     Another wall with an deep carving. From what you can tell the cutout is in the shape of a ring. 
   - keyPieces >= 5 ?
-    The door falls to the floor. Stale air flows out of the passageway.(p)...(p)You get the feeling that this door was sealed for a reason...(js "removeItem('keyDoor_pieces_PERM_SOLID')")
+    The door falls to the floor. Stale air flows out of the passageway.(soundeffectNow "creature_shriek_01")(jsNow "removeItem('keyDoor_pieces_PERM_SOLID')")(p)...(p)You get the feeling that this door was sealed for a reason...
 }
 """
 
 DLG ITM_l
-(jsNow "pickupTorch()")You pickup a torch off the alter, and it spontaneously ignites.(p)You spy your reflection in a nearby puddle. You're uglier than you remember...{hasTorch = 1}
+(jsNow "pickupTorch()")You pickup a torch off the alter, and it spontaneously ignites.(p)It's the first {clr7}real fire{clr7} you have seen in a long while.(p)You spy your reflection in a nearby puddle.(p)You're uglier than you remember...{hasTorch = 1}
 
 DLG SPR_5
 """
 {
   - hasTorch == 0 ?
-    A large firebasket sits on the floor. It looks like it could be ignited with a real flame. 
-  - torchLit < 2 ?
-    {torchLit = torchLit + 1}(js "lightLeftTorch()")(js "startSpriteDialog(getSpriteId('final_door_checker'))")
+    A large firebasket sits on the floor.(p)It looks like it could be ignited with a {clr4}real flame{clr4}. 
+  - leftTorch == 0 ?
+    {leftTorch = 1}
+{torchLit = torchLit + 1}(js "lightLeftTorch()")(js "startSpriteDialog(getSpriteId('final_door_checker'))")
 }
 """
 
@@ -2313,7 +2323,7 @@ DLG SPR_6
 """
 {
   - hasTorch == 0 ?
-    A large firebasket sits on the floor. It looks like it could be ignited with a real flame. 
+    A large firebasket sits on the floor.(p)It looks like it could be ignited with a {clr7}real flame{clr7}.
   - torchLit < 2 ?
     {torchLit = torchLit + 1}(js "lightRightTorch()")(js "startSpriteDialog(getSpriteId('final_door_checker'))")
 }
@@ -2343,7 +2353,7 @@ DLG ITM_s
 """
 {
   - hasTorch == 1 ?
-    The light seems to irritate the creature in the darkness, and you know the light from your torch is the only thing keeping it at bay.(p)...but the torch is running out(js "removeItem('trg_startEscape_PERM')")(js "startEscape()")
+    The light seems to irritate the creature in the darkness, and you know the light from your torch is the only thing keeping it at bay.(p)...but you can feel the light slowly fading(js "removeItem('trg_startEscape_PERM')")(js "startEscape()")
 }
 """
 
@@ -2351,7 +2361,7 @@ DLG SPR_9
 The light from your torch burns out, and you keep running in through the darkness.(p)You cannot see anything, but you don't dare stop.(p)You feel something sharp hit you in the back, and you fall to the floor, unable to breath.(p)A slimy tentacle begins to wrap itself around your chest, and then your head.(p)You cannot breath, and everything goes even darker than it was.(p)...(p)This is the end for you.{hasTorch = 0}(jsNow "respawn()")(exitNow "hub_02, 10, 8")
 
 END 0
-Fresh air fills your lungs, and your eyes burn from the sunlight.(p)Even now, just moments after the ordeal, that horrible place is beginning to fade from memory.(p)...if only it were that easy.
+(musicNow "ending_outside")Fresh air fills your lungs, and your eyes burn from the sunlight.(p)Even now, just moments after the ordeal, that horrible place is beginning to fade from memory.(p)...if only it were that easy.(p)CREDITS:(p)Game By: Zach Hixson(p)Sound: Zach Hixson and Freesound.org(p)Hacks: Zach Hixson, Sean's Hacks
 
 VAR toe_tile
 0
@@ -2369,7 +2379,7 @@ VAR keyCreatureState
 0
 
 VAR keyPieces
-0
+5
 
 VAR hasSearched
 0
@@ -2384,5 +2394,11 @@ VAR hasTorch
 0
 
 VAR torchLit
+0
+
+VAR leftTorch
+0
+
+VAR rightTorch
 0
 

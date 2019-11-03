@@ -44,7 +44,11 @@ var hackOptions = {
 	// Undefined rooms will keep playing whatever music they were last playing
 	musicByRoom: {
 		// Note: the entries below are examples that should be removed and replaced with your own room -> audio id mappings
-		0: 'def_ambiance',
+		0: 'cave_ambiance',
+		3: 'S',
+		4: 'underground',
+		k: 'S',
+		l: 'ending_inside',
 		//1: 'S', // This room is silent - it will stop music when you enter (see `silenceId` below)
 		//2: 'another song ID',
 		//h: 'a song ID for a room with a non-numeric ID',

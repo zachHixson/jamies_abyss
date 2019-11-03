@@ -1,15 +1,16 @@
-let startRadius;
-let timer = 20;
+let startRadius = 200;
+let timerEnd = 20;
+let timer;
 let timerInterval;
 
 function pickupTorch(){
-    startRadius = 200;
-    shaderParams.colorMix = true;
     shaderParams.radius = startRadius;
+    shaderParams.colorMix = true;
     shaderParams.opacity = 70;
 }
 
 function startEscape(){
+    timer = 0;
     timerInterval = setInterval(function(){escapeLoop()}, 20);
 }
 
@@ -18,7 +19,11 @@ function escapeLoop(){
         triggerDeath();
     }
     else{
-        shaderParams.radius -= (startRadius / (timer * (1000/20)));
+        let fac = timer / (timerEnd * (1000/20));
+        shaderParams.radius = startRadius * (-Math.sqrt(fac) + 1);
+
+        timer++;
+        console.log(fac)
     }
 }
 

@@ -134,7 +134,7 @@ let dialogChoices = {
 }`,
 	"useLimb" :
 `{choice
-	- Use arm
+	- Use arm taken from corpse
 	  You use the arm to fish out something down below. It's another broken piece of the object.(p)[You gained another broken piece]{keyPieces = keyPieces + 1}{hasLimb = 2}{hasSearched = 2}(js "startSpriteDialog(getSpriteId('key_checker'))")
 	- Don't use
 	  Using a corpse's arm for your own purpose just seems wrong.
