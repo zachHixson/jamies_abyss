@@ -2412,7 +2412,13 @@ DLG ITM_s
 """
 
 DLG SPR_9
-The light from your torch burns out, and you keep running in through the darkness.(p)You cannot see anything, but you don't dare stop.(p)You feel something sharp hit you in the back, and you fall to the floor, unable to breath.(p)A slimy tentacle begins to wrap itself around your chest, and then your head.(p)You cannot breath, and everything goes even darker than it was.(p)...(p)This is the end for you.{hasTorch = 0}{torchRoomUnlocked = 0}(jsNow "respawn()")(musicNow "underground")(exitNow "hub_02, 10, 8")
+"""
+The light from your torch burns out, and you keep running in through the darkness.(p)You cannot see anything, but you don't dare stop.(p)You feel something sharp hit you in the back, and you fall to the floor, unable to breath.(p)A slimy tentacle begins to wrap itself around your chest, and then your head.(p)You cannot breath, and everything goes even darker than it was.(p)...(p)This is the end for you.{hasTorch = 0}
+{torchRoomUnlocked = 0}
+{leftTorch = 0}
+{rightTorch = 0}
+{torchLit = 0}(jsNow "respawn()")(musicNow "underground")(exitNow "hub_02, 10, 8")
+"""
 
 DLG ITM_u
 This door is impenetrable. You are trapped in here until you find a way to open it back up.  
@@ -2457,7 +2463,7 @@ VAR keyCreatureState
 0
 
 VAR keyPieces
-0
+6
 
 VAR hasSearched
 0
