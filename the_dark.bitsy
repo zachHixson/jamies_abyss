@@ -556,7 +556,6 @@ ITM q 4,11
 ITM r 9,5
 ITM r 13,11
 ITM q 8,5
-ITM 5 9,8
 ITM 14 14,8
 EXT 0,8 g 15,8
 EXT 15,8 i 0,8
