@@ -260,12 +260,9 @@ ROOM 8
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NAME squishy_room_01
-ITM c 12,6
-ITM b 12,9
 ITM d 3,6
 ITM d 9,11
 ITM d 7,4
-ITM d 10,6
 ITM e 7,11
 ITM e 3,9
 ITM e 7,6
@@ -274,8 +271,11 @@ ITM e 12,4
 ITM b 8,9
 ITM d 5,8
 ITM j 11,7
-ITM b 11,6
-ITM c 11,8
+ITM b 11,5
+ITM c 11,10
+ITM d 10,5
+ITM b 12,11
+ITM c 10,4
 EXT 4,12 5 4,0
 EXT 8,3 9 9,13
 PAL 2
