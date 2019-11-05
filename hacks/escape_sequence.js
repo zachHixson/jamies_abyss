@@ -1,6 +1,6 @@
 let startRadius = 200;
-let timerEnd = 23;
-let timer;
+let timerDuration = 45;
+let startTime;
 let timerInterval;
 
 function pickupTorch(){
@@ -10,7 +10,7 @@ function pickupTorch(){
 }
 
 function startEscape(){
-    timer = 0;
+    startTime = new Date().getTime();
     timerInterval = setInterval(function(){escapeLoop()}, 20);
 }
 
@@ -19,11 +19,9 @@ function escapeLoop(){
         triggerDeath();
     }
     else{
-        let fac = timer / (timerEnd * (1000/20));
+        let curTime = new Date().getTime();
+        let fac = (curTime - startTime) / (timerDuration * 1000);
         shaderParams.radius = startRadius * (-Math.sqrt(fac) + 1);
-
-        timer++;
-        console.log(fac)
     }
 }
 
