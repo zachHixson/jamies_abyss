@@ -47,8 +47,10 @@ function openDoor(){
 function triggerDeath(){
     clearInterval(timerInterval);
     activateShader(blackout);
+    spawnItemInRoom('trg_trap', 4, 8, 'torch_alter');
     spawnItemInRoom('torch', 9, 8, 'torch_alter');
     spawnItemInRoom('trg_startEscape_PERM', 14, 8, 'row_pillars');
+    room[getRoomId('torch_alter')].tilemap[7][13] = "0";
     startSpriteDialog(getSpriteId('death_creature'));
 }
 

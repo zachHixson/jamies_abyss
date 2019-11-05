@@ -47,8 +47,6 @@ var hackOptions = {
 		0: 'cave_ambiance',
 		3: 'S',
 		4: 'underground',
-		b: 'underground',
-		g: 'underground_ambiance',
 		k: 'cave_ambiance',
 		l: 'ending_inside',
 		//1: 'S', // This room is silent - it will stop music when you enter (see `silenceId` below)

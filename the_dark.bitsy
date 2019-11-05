@@ -528,6 +528,7 @@ ITM b 8,4
 ITM c 10,4
 ITM b 11,12
 ITM b 13,10
+ITM 17 1,8
 EXT 0,8 f 15,12
 EXT 15,8 h 0,8
 PAL 2
@@ -1362,7 +1363,7 @@ SPR A
 00011000
 00100100
 00100100
-POS i 4,6
+POS 0 5,7
 
 SPR a
 00000000
@@ -1708,6 +1709,18 @@ ITM 16
 11111111
 NAME door_torch_PERM_SOLID
 DLG ITM_u
+
+ITM 17
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME trg_undg_ambiance
+DLG ITM_v
 
 ITM a
 00000000
@@ -2395,15 +2408,12 @@ DLG ITM_s
 """
 {
   - hasTorch == 1 ?
-    The light seems to irritate the creature in the darkness, and you know the light from your torch is the only thing keeping it at bay.(p)...but you can feel the light slowly fading(js "removeItem('trg_startEscape_PERM')")(js "startEscape()")
+    (soundeffectNow "creature_shriek_02")The light seems to irritate the creature in the darkness, and you know the light from your torch is the only thing keeping it at bay.(p)...but you can feel the light slowly fading(js "removeItem('trg_startEscape_PERM')")(music "escape")(js "startEscape()")
 }
 """
 
 DLG SPR_9
-The light from your torch burns out, and you keep running in through the darkness.(p)You cannot see anything, but you don't dare stop.(p)You feel something sharp hit you in the back, and you fall to the floor, unable to breath.(p)A slimy tentacle begins to wrap itself around your chest, and then your head.(p)You cannot breath, and everything goes even darker than it was.(p)...(p)This is the end for you.{hasTorch = 0}(jsNow "respawn()")(exitNow "hub_02, 10, 8")
-
-DLG ITM_t
-(soundeffectNow "trapped")(jsNow "spawnItem(getItemId('door_torch_PERM_SOLID'), 3, 8)")
+The light from your torch burns out, and you keep running in through the darkness.(p)You cannot see anything, but you don't dare stop.(p)You feel something sharp hit you in the back, and you fall to the floor, unable to breath.(p)A slimy tentacle begins to wrap itself around your chest, and then your head.(p)You cannot breath, and everything goes even darker than it was.(p)...(p)This is the end for you.{hasTorch = 0}{torchRoomUnlocked = 0}(jsNow "respawn()")(musicNow "underground")(exitNow "hub_02, 10, 8")
 
 DLG ITM_u
 This door is impenetrable. You are trapped in here until you find a way to open it back up.  
@@ -2414,7 +2424,18 @@ DLG SPR_a
   - hasTorch == 0 ?
     A large firebasket sits on the floor.(p)It looks like it could be ignited with a {alert}real flame{alert}. 
   - torchRoomUnlocked == 0 ?
-    (jsNow "getRoom().tilemap[7][13] = getTileId('final_flame')")(soundeffect "unlocked")You hear the sound of a door unlocking.(jsNow "removeItem('door_torch_PERM_SOLID')")
+    (jsNow "getRoom().tilemap[7][13] = getTileId('final_flame')")(soundeffect "unlocked")You hear the sound of a door unlocking.(jsNow "removeItem('door_torch_PERM_SOLID')"){torchRoomUnlocked = 1}
+}
+"""
+
+DLG ITM_t
+(soundeffectNow "trapped")(jsNow "spawnItem(getItemId('door_torch_PERM_SOLID'), 3, 8)")
+
+DLG ITM_v
+"""
+{
+  - hasTorch == 0 ?
+    (music "underground_ambiance")
 }
 """
 
@@ -2437,7 +2458,7 @@ VAR keyCreatureState
 0
 
 VAR keyPieces
-6
+0
 
 VAR hasSearched
 0
