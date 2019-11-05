@@ -64,7 +64,6 @@ function spawnItemInRoom(itemName, xIn, yIn, roomName){
 	else{
 		roomId = getRoomId(roomName);
 	}
-
 	room[roomId].items.push({
 		id : itmId,
 		x : xIn,

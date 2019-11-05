@@ -569,11 +569,11 @@ ROOM i
 0,0,0,u,w,j,0,0,n,n,0,j,0,u,0,0
 0,0,0,u,y,i,0,0,n,n,n,i,0,u,0,0
 0,0,0,u,0,0,0,0,0,0,0,0,0,u,0,0
-0,0,0,u,0,0,0,f,13,13,v,y,n,u,0,0
-v,v,v,v,n,0,0,d,0,0,v,10,10,v,0,0
-0,0,0,0,0,0,0,d,0,0,v,x,y,v,0,0
-v,v,v,v,0,0,0,d,0,0,v,10,z,v,0,0
-0,0,0,u,0,n,0,e,c,c,v,w,y,u,0,0
+0,0,0,u,0,0,0,f,13,13,v,y,n,0,v,0
+v,v,v,v,n,0,0,d,0,0,v,0,0,0,0,v
+0,0,0,0,0,0,0,d,0,0,v,0,0,0,0,v
+v,v,v,v,0,0,0,d,0,0,v,0,0,0,0,u
+0,0,0,u,0,n,0,e,c,c,v,0,w,0,v,0
 0,0,0,u,0,j,0,0,0,0,0,j,0,u,0,0
 0,0,0,u,w,i,0,0,n,0,0,i,0,u,0,0
 0,0,0,u,z,10,0,n,n,n,0,0,0,u,0,0
@@ -583,7 +583,6 @@ NAME torch_alter
 ITM t 9,8
 ITM q 4,2
 ITM q 6,14
-ITM q 13,8
 ITM q 11,2
 ITM r 3,2
 ITM r 13,11
@@ -591,6 +590,7 @@ ITM r 10,14
 ITM r 13,4
 ITM r 3,10
 ITM k 6,8
+ITM 15 4,8
 EXT 0,8 h 15,8
 PAL 2
 
@@ -724,6 +724,7 @@ TIL 11
 00111100
 00011000
 NAME final_flame
+WAL true
 COL 6
 
 TIL 12
@@ -1361,7 +1362,7 @@ SPR A
 00011000
 00100100
 00100100
-POS b 8,8
+POS i 4,6
 
 SPR a
 00000000
@@ -1487,6 +1488,19 @@ SPR j
 00000001
 NAME death_creature
 DLG SPR_9
+
+SPR k
+01000010
+01100110
+00011000
+00100100
+00011000
+00000000
+00000000
+00000000
+NAME torchRoom_unlock_torch
+DLG SPR_a
+POS i 13,8
 
 ITM 0
 10000000
@@ -1670,6 +1684,30 @@ ITM 14
 00000001
 NAME trg_startEscape_PERM
 DLG ITM_s
+
+ITM 15
+10000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000001
+NAME trg_trap
+DLG ITM_t
+
+ITM 16
+11111111
+11111111
+11111111
+11001100
+00110011
+11111111
+11111111
+11111111
+NAME door_torch_PERM_SOLID
+DLG ITM_u
 
 ITM a
 00000000
@@ -2364,6 +2402,22 @@ DLG ITM_s
 DLG SPR_9
 The light from your torch burns out, and you keep running in through the darkness.(p)You cannot see anything, but you don't dare stop.(p)You feel something sharp hit you in the back, and you fall to the floor, unable to breath.(p)A slimy tentacle begins to wrap itself around your chest, and then your head.(p)You cannot breath, and everything goes even darker than it was.(p)...(p)This is the end for you.{hasTorch = 0}(jsNow "respawn()")(exitNow "hub_02, 10, 8")
 
+DLG ITM_t
+(soundeffectNow "trapped")(jsNow "spawnItem(getItemId('door_torch_PERM_SOLID'), 3, 8)")
+
+DLG ITM_u
+This door is impenetrable. You are trapped in here until you find a way to open it back up.  
+
+DLG SPR_a
+"""
+{
+  - hasTorch == 0 ?
+    A large firebasket sits on the floor.(p)It looks like it could be ignited with a {alert}real flame{alert}. 
+  - torchRoomUnlocked == 0 ?
+    (jsNow "getRoom().tilemap[7][13] = getTileId('final_flame')")(soundeffect "unlocked")You hear the sound of a door unlocking.(jsNow "removeItem('door_torch_PERM_SOLID')")
+}
+"""
+
 END 0
 (soundeffectNow "ending_birds")Fresh air fills your lungs, and your eyes burn from the sunlight.(p)Even now, just moments after the ordeal, that horrible place is beginning to fade from memory.(p)...if only it were that easy.(p)CREDITS:(p)Game By: Zach Hixson(p)Sound: Zach Hixson and Freesound.org(p)Hacks: Zach Hixson, Sean's Hacks
 
@@ -2395,7 +2449,7 @@ VAR searchedCorpse
 0
 
 VAR hasTorch
-1
+0
 
 VAR torchLit
 0
@@ -2407,5 +2461,8 @@ VAR rightTorch
 0
 
 VAR keyRemaining
+0
+
+VAR torchRoomUnlocked
 0
 
