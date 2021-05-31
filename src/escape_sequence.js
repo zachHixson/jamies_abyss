@@ -58,6 +58,8 @@ function triggerDeath(){
     spawnItemInRoom('trg_trap', 4, 8, 'torch_alter');
     spawnItemInRoom('torch', 9, 8, 'torch_alter');
     spawnItemInRoom('trg_startEscape_PERM', 14, 8, 'row_pillars');
+    torchesLit[0] = false;
+    torchesLit[1] = false;
     room[getRoomId('hub_02')].tilemap[5][6] = "0";
     room[getRoomId('hub_02')].tilemap[5][9] = "0";
     room[getRoomId('torch_alter')].tilemap[7][13] = "0";
