@@ -83,7 +83,6 @@ function removeItem(itemName){
 
 function swapItem(oldItemName, newItemName){
 	let oldItem = getItemInRoom(getItemId(oldItemName));
-	console.log(oldItem);
 	removeItem(oldItemName);
 	spawnItem(getItemId(newItemName), oldItem.x, oldItem.y);
 }

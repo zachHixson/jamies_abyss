@@ -2,6 +2,7 @@ let startRadius = 200;
 let timerDuration = 45;
 let startTime;
 let timerInterval;
+let torchesLit = [false, false];
 
 function pickupTorch(){
     shaderParams.radius = startRadius;
@@ -26,21 +27,29 @@ function escapeLoop(){
 }
 
 function lightLeftTorch(){
-    let flameId = getTileId('final_flame');
-    getRoom().tilemap[5][6] = flameId;
+    if (!torchesLit[0]){
+        let flameId = getTileId('final_flame');
+        getRoom().tilemap[5][6] = flameId;
+        torchesLit[0] = true;
+    }
 }
 
 function lightRightTorch(){
-    let flameId = getTileId('final_flame');
-    getRoom().tilemap[5][9] = flameId;
+    if (!torchesLit[1]){
+        let flameId = getTileId('final_flame');
+        getRoom().tilemap[5][9] = flameId;
+        torchesLit[1] = true;
+    }
 }
 
 function openDoor(){
-    clearInterval(timerInterval);
-    swapItem('finalDoor_01_PERM_SOLID', 'final_door_open_01_PERM');
-    swapItem('finalDoor_02_PERM_SOLID', 'final_door_open_02_PERM');
-    swapItem('finalDoor_03_PERM_SOLID', 'final_door_open_04_PERM');
-    swapItem('finalDoor_04_PERM_SOLID', 'final_door_open_03_PERM');
+    if (torchesLit[0] && torchesLit[1]){
+        clearInterval(timerInterval);
+        swapItem('finalDoor_01_PERM_SOLID', 'final_door_open_01_PERM');
+        swapItem('finalDoor_02_PERM_SOLID', 'final_door_open_02_PERM');
+        swapItem('finalDoor_03_PERM_SOLID', 'final_door_open_04_PERM');
+        swapItem('finalDoor_04_PERM_SOLID', 'final_door_open_03_PERM');
+    }
 }
 
 function triggerDeath(){
@@ -60,6 +69,5 @@ function respawn(){
 }
 
 function triggerEnding(){
-    clearInterval(timerInterval);
     deactivateShader();
 }
